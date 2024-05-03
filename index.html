@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+<audio src="https://icecast.radiofrance.fr/fb1071-midfi.mp3" controls id="audio"></audio>
+<input type="number" id="delay-time" />
+
+<button onclick="add(-1)"> < </button>
+<button onclick="add(1)"> > </button>
+<script>
+
+    'use strict';
+    let audio = document.getElementById("audio");
+    function add(nbSeconds) {
+        console.log("CUR TIME", audio.currentTime);
+        audio.currentTime = audio.currentTime + nbSeconds;
+        console.log("CUR TIME", audio.currentTime);
+    }
+
+
+    audio.addEventListener('loadedmetadata',function(e){
+        console.log("ON LOAD", audio.duration, e);
+    },false);
+    function onLoad(e) {
+        console.log("ON LOAD", e);
+    }
+</script>
+</body>
+</html>
