@@ -1,31 +1,37 @@
 <!doctype html>
 <html>
 <head>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+    <title>Radio Synchro</title>
 </head>
 <body>
-<audio src="https://icecast.radiofrance.fr/fb1071-midfi.mp3" controls id="audio"></audio>
-<input type="number" id="delay-time" />
-
-<button onclick="add(-1)"> < </button>
-<button onclick="add(1)"> > </button>
+<div id="app">
+    <div class="container">
+        <audio id="audio"></audio>
+        <radio-select></radio-select>
+        <seven-segment></seven-segment>
+        <seek-buttons></seek-buttons>
+        <infos></infos>
+    </div>
+</div>
 <script>
-
-    'use strict';
-    let audio = document.getElementById("audio");
-    function add(nbSeconds) {
-        console.log("CUR TIME", audio.currentTime);
-        audio.currentTime = audio.currentTime + nbSeconds;
-        console.log("CUR TIME", audio.currentTime);
-    }
-
-
-    audio.addEventListener('loadedmetadata',function(e){
-        console.log("ON LOAD", audio.duration, e);
-    },false);
-    function onLoad(e) {
-        console.log("ON LOAD", e);
-    }
+let main = new Main();
+const vueApp = Vue.createApp({
+   components: {
+       'radio-select': Vue.defineAsyncComponent( ()=>loadModule('./components/RadioSelect.vue', Utils.loadModuleOptions())),
+       'seven-segment': Vue.defineAsyncComponent( () => loadModule('./components/SevenSegment.vue', Utils.loadModuleOptions()) )
+       'seek-buttons': Vue.defineAsyncComponent( () => loadModule('./components/SeekButtons.vue', Utils.loadModuleOptions()) )
+       'infos': Vue.defineAsyncComponent( () => loadModule('./components/Infos.vue', Utils.loadModuleOptions()) )
+   }
+})
+vueApp.use(router);
+vueApp.config.globalProperties.$main = main;
+vueApp.mount('#app');
 </script>
 </body>
 </html>
