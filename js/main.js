@@ -8,7 +8,9 @@ class Main {
     ];
     curRadioIndex = null;
     delay = 0;
-
+    isPaused = true;
+    interval = null;
+    pauseStartTime = null;
 
 
     setRadio(id) {
@@ -19,7 +21,26 @@ class Main {
         this.curRadioIndex = id;
         this.audioElement = new Audio(this.radios[id].flow);
         this.audioElement.play();
+        this.isPaused = false;
         this.delay = 0;
+    }
 
+    addDelay(seconds) {
+        this.delay += seconds;
+        this.audioElement.currentTime = this.audioElement.currentTime - seconds;
+    }
+
+    pause() {
+        this.isPaused = true;
+        this.audioElement.pause();
+        this.interval = setInterval(()=>{
+            this.delay += 0.1;
+        },100);
+    }
+
+    resume() {
+        this.isPaused = false;
+        this.audioElement.play();
+        clearInterval(this.interval);
     }
 }

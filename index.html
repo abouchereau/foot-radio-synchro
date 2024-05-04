@@ -13,24 +13,27 @@
 <body>
 <div id="app">
     <div class="container">
-        <radio-select></radio-select>
-        <seven-segment></seven-segment>
-        <seek-buttons></seek-buttons>
+        <radio-select :main="main"></radio-select>
+        <seven-segment :main="main"></seven-segment>
+        <seek-buttons :main="main"></seek-buttons>
         <infos></infos>
     </div>
 </div>
 <script>
 const { loadModule } = window['vue3-sfc-loader'];
-const main = new Main();
 const vueApp = Vue.createApp({
    components: {
        'radio-select': Vue.defineAsyncComponent(()=>loadModule('./components/RadioSelect.vue', Utils.loadModuleOptions())),
        'seven-segment': Vue.defineAsyncComponent(() => loadModule('./components/SevenSegment.vue', Utils.loadModuleOptions())),
        'seek-buttons': Vue.defineAsyncComponent(() => loadModule('./components/SeekButtons.vue', Utils.loadModuleOptions())),
        'infos': Vue.defineAsyncComponent(() => loadModule('./components/Infos.vue', Utils.loadModuleOptions()))
-   }
+   },
+    data() {
+        return {
+            main: new Main()
+        }
+    }
 });
-vueApp.config.globalProperties.$main = main;
 vueApp.mount('#app');
 </script>
 </body>
