@@ -20,7 +20,7 @@
       <button @click="main.addDelay(-2)">+2</button>
     </div>
     <div class="btn-container">
-      <button @click="main.addDelay(10)">+10</button>
+      <button @click="main.addDelay(-10)">+10</button>
     </div>
   </div>
 </template>
