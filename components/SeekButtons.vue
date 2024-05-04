@@ -1,26 +1,14 @@
 <template>
   <div>
-    <div class="btn-container">
-      <button @click="main.addDelay(10)" :disabled="main.audioElement.currentTime<10">-10</button>
-    </div>
-    <div class="btn-container">
-      <button @click="main.addDelay(2)" :disabled="main.audioElement.currentTime<2">-2</button>
-    </div>
-    <div class="btn-container">
-      <button @click="main.addDelay(0.5)" :disabled="main.audioElement.currentTime<0.5">-0.5</button>
+    <div class="btn-container" v-for="i in [10, 2, 0.5]">
+      <button @click="main.addDelay(i)" :disabled="main.audioElement.currentTime<i">-{{i}}</button>
     </div>
     <div class="btn-container">
       <button v-if="main.isPaused" @click="main.resume()">PLAY</button>
       <button v-else @click="main.pause()">PAUSE</button>
     </div>
-    <div class="btn-container">
-      <button @click="main.addDelay(-0.5)" :disabled="main.delay<0.5">+0.5</button>
-    </div>
-    <div class="btn-container">
-      <button @click="main.addDelay(-2)" :disabled="main.delay<2">+2</button>
-    </div>
-    <div class="btn-container">
-      <button @click="main.addDelay(-10)" :disabled="main.delay<10">+10</button>
+    <div class="btn-container" v-for="i in [0.5, 2, 10]">>
+      <button @click="main.addDelay(-i)" :disabled="main.delay<i">+{{i}}</button>
     </div>
   </div>
 </template>
