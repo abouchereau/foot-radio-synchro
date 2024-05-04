@@ -1,25 +1,15 @@
 <template>
   <div>
-        <div v-for="radio in radios">
+        <div v-for="(radio, id) in $main.radios" :key="id">
             <h3>{{ radio.name }}</h3>
-            <button @click="$main.setFlow(radio.flow)"></button>
+            <button :class="{'active':$main.curRadioIndex==id}" @click="$main.setRadio(id)">{{id+1}}</button>
+        </div>
   </div>
 </template>
 
 <script>
-
-
 export default {
-  name: 'radio-select',
-  data() {
-    return {
-      radios: [
-        {"name": "France Bleu Paris", "flow":"https://icecast.radiofrance.fr/fb1071-midfi.mp3"},
-        {"name": "RMC", "flow":"https://audio.bfmtv.com/rmcradio_128.mp3"},
-        {"name": "RTL", "flow":"https://streamer-02.rtl.fr/rtl-1-44-128?listen=webCwsBCggNCQgLDQUGBAcGBg"}
-      ],
-    }
-  }
+  name: 'radio-select'
 }
 </script>
 <style>
