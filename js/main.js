@@ -11,6 +11,10 @@ class Main {
     isPaused = true;
     interval = null;
     pauseStartTime = null;
+    //copie de la valeur pour binding
+    currentTime = null;
+
+
 
 
     setRadio(id) {
@@ -23,6 +27,11 @@ class Main {
         this.audioElement.play();
         this.isPaused = false;
         this.delay = 0;
+        setInterval(()=>{
+            if (this.audioElement != null) {
+                this.currentTime = this.audioElement.currentTime;
+            }
+        },500);
     }
 
     addDelay(seconds) {
