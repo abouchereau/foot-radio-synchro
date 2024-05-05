@@ -15,7 +15,8 @@
 
 
 <script setup>
-const props = defineProps(['main'])
+const props = defineProps(['main']);
+
 function enableGoBack(seconds) {
     return props.main != null && props.main.audioElement != null && props.main.currentTime > seconds;
  }
@@ -24,6 +25,7 @@ function enableGoForward(seconds) {
     return props.main != null && props.main.audioElement != null && props.main.delay > seconds;
 }
 </script>
+
 <style scoped>
 .btn-container {
   width:60px;
