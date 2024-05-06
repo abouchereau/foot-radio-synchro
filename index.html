@@ -4,20 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader@0.9.5/dist/vue3-sfc-loader.min.js"></script>
     <script src="js/utils.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
     <title>Radio Synchro</title>
 </head>
 <body>
 <div id="app">
-    <div class="container">
-        <radio-select :main="main"></radio-select>
-        <seven-segment :main="main"></seven-segment>
-        <seek-buttons :main="main"></seek-buttons>
-        <infos></infos>
-    </div>
+    <radio-select :app="app"></radio-select>
+    <seven-segment :app="app"></seven-segment>
+    <seek-buttons :app="app"></seek-buttons>
+    <infos></infos>
 </div>
 <script>
 const { loadModule } = window['vue3-sfc-loader'];
@@ -30,7 +33,7 @@ const vueApp = Vue.createApp({
    },
     data() {
         return {
-            main: new Main()
+            app: new App()
         }
     }
 });

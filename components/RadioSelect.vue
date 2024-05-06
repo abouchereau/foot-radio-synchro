@@ -1,26 +1,34 @@
 <template>
-    <div>
-        <div class="radio-option" v-for="(radio, id) in main.radios" :key="id">
-            <h3>{{ radio.name }}</h3>
-            <button :class="{'active':main.curRadioIndex==id}" @click="main.setRadio(id)">{{id+1}}</button>
-        </div>
+    <div class="pure-g mt-3">
+      <div class="pure-u-1-6"></div>
+      <div class="pure-u-2-3 text-center">
+          <select v-model="radioId">
+              <option value="-1" disabled>Sélectionner une radio</option>
+              <option v-for="(radio, id) in props.app.radios" :key="id" :value="id">
+                {{ radio.name }}
+              </option>
+          </select>
+      </div>
     </div>
 </template>
 
-<script>
-export default {
-  props: ['main'],
-  name: 'radio-select'
-}
+<script setup>
+import { ref, watch } from 'vue';
+const props = defineProps(['app']);
+const radioId = ref(-1);
+
+watch(radioId, async (newId) => {
+  props.app.setRadio(newId)
+});
 </script>
 <style scoped>
-.radio-option {
-  height: 100px;
-  width:200px;
-  display: inline-block;
-  text-align:center;
+select {
+  width:100%;
+  border:none;
+  border-radius:15px;
+  padding:15px;
 }
-button.active {
-  background-color:green;
+option {
+  padding:20px;
 }
 </style>
