@@ -37,9 +37,9 @@ function delayDecimal() {
   margin:auto;
   box-sizing: content-box;
   background-color:#222;
-  border-radius: 5px;
+  border-radius: 10px;
   width:168px;
-
+  border:4px solid #000;
 }
 
 .seg7-5 span {

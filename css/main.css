@@ -1,5 +1,9 @@
 body {
     background-color: #000;
+    background-image: url(../images/back.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50% 50%;
     color: #FFF;
     font-family: "Josefin Sans", sans-serif;
 }

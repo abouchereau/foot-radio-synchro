@@ -30,6 +30,8 @@
 </template>
 <style scoped>
   .back-color {
-      background-color: #666;
+     border-radius:15px;
+    padding:15px;
+      background-color: rgba(00,00,00,0.8);
   }
 </style>
