@@ -36,7 +36,7 @@ function delayDecimal() {
   display: block;
   margin:auto;
   box-sizing: content-box;
-  background-color:#333;
+  background-color:#222;
   border-radius: 5px;
   width:168px;
 
@@ -53,6 +53,5 @@ function delayDecimal() {
 
 .seg7off {
   opacity:0.3;
-
 }
 </style>

@@ -77,3 +77,7 @@ body {
 .button-xlarge {
     font-size: 125%;
 }
+
+.margin-auto {
+    margin:auto;
+}

@@ -1,18 +1,21 @@
 <template>
-    <div class="pure-g mt-4">
-        <div class="pure-u-1-6 text-center" v-for="i in [10, 2, 0.5]">
-            <button class="pure-button button-secondary" @click="app.addDelay(i)" :disabled="!enableGoBack(i)">-{{i}}</button>
-        </div>
-        <div class="pure-u-1-6 text-center" v-for="i in [0.5, 2, 10]">
-            <button class="pure-button button-secondary" @click="app.addDelay(-i)" :disabled="!enableGoForward(i)">+{{i}}</button>
-        </div>
-    </div>
     <div class="pure-g text-center mt-3">
       <div class="pure-u-1-1">
-        <button class="button-xlarge pure-button button-secondary"  :disabled="app.audioElement == null" v-if="app.isPaused" @click="app.resume()">PLAY</button>
-        <button v-else class="button-xlarge pure-button button-secondary" :disabled="app.audioElement == null" @click="app.pause()">PAUSE</button>
+        <button class="button-xlarge pure-button button-secondary"  :disabled="app.audioElement == null" v-if="app.isPaused" @click="app.resume()"><i class="fa-solid fa-play"></i> PLAY</button>
+        <button v-else class="button-xlarge pure-button button-secondary" :disabled="app.audioElement == null" @click="app.pause()"> <i class="fa-solid fa-pause"></i> PAUSE</button>
       </div>
     </div>
+    <div class="pure-g mt-4">
+        <div class="pure-u-1-6 text-center" v-for="i in [10, 2, 0.5]">
+          -{{i}}s.<br />
+            <button class="pure-button button-secondary" @click="app.addDelay(i)" :disabled="!enableGoBack(i)"><i class="fa-solid fa-backward"></i></button>
+        </div>
+        <div class="pure-u-1-6 text-center" v-for="i in [0.5, 2, 10]">
+          +{{i}}s.<br />
+            <button class="pure-button button-secondary" @click="app.addDelay(-i)" :disabled="!enableGoForward(i)"><i class="fa-solid fa-forward"></i></button>
+        </div>
+    </div>
+
 </template>
 
 

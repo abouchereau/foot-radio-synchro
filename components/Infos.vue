@@ -1,17 +1,21 @@
 <template>
   <div class="pure-g mt-5">
     <div class="pure-u-1-4"></div>
-    <div class="pure-u-2-4 text-center">
-      <p>Vis tes matchs intensément en écoutant les commentaires de la radio !</p>
-      <p>Il y a généralement un décalage entre l'image à la TV et le son de la radio. Foot Radio Synchro te permet de caler ta radio préférée avec l'image la TV.</p>
-      <p>Attention : la synchronisation se fait <u>"manuellement"</u> : il faut ajuster soi-même le retard à appliquer au son de la radio.</p>
-      <p>Comment faire ? Quand le commentateur radio évoque une action précise, faire PAUSE, et quand tu vois cette action à la TV, fais PLAY pour remettre le son en route.</p>
+    <div class="pure-u-2-4 text-center back-color">
+      <p>Vis tes matchs intensément en écoutant les commentaires de la radio avec l'image de la TV !</p>
+      <p>Quand on veut mettre le son de la radio en même temps que la TV, on observe généralement un décalage assez gênant pour suivre l'action...
+        <i>Foot Radio Synchro</i> te permet d'écouter le son de ta radio préférée en ajoutant un léger retard pour se synchroniser avec la TV !</p>
+      <p>Pour effectuer cette synchronisation, cela se fait <i>"manuellement"</i> : il faut ajuster soi-même le retard à appliquer au son de la radio.</p>
+      <p>Comment faire ?
+        Quand le commentateur radio évoque une action précise, faire PAUSE,
+        et quand tu observes cette action en train de se dérouler à la TV,
+        fais PLAY pour remettre le son en route. Utilise ensuite les boutons de recalage pour faire des ajustements.</p>
       <p>Décalages moyens constatés :</p>
-      <table class="pure-table">
+      <table class="pure-table margin-auto">
         <thead>
         <tr>
-          <th>Support</th>
-          <th>Décalage</th>
+          <th class="text-center">Support</th>
+          <th class="text-center">Décalage</th>
         </tr>
         </thead>
         <tbody>
@@ -20,7 +24,13 @@
           <tr><td>Site streaming</td><td>60 à 120 secondes</td></tr>
         </tbody>
       </table>
-      <p>Quelle radio suivre ? Voir <a target="_blank" href="https://www.radio.fr/sport">https://www.radio.fr/sport</a></p>
+      <p>Sur quelle radio suivre le match ?<br />
+        Voir <a target="_blank" href="https://www.radio.fr/sport">https://www.radio.fr/sport</a></p>
     </div>
   </div>
 </template>
+<style scoped>
+  .back-color {
+      background-color: #666;
+  }
+</style>
