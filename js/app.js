@@ -18,10 +18,10 @@ class App {
     ];
     curRadioIndex = null;
     delay = 0;
-    isPaused = true;
     interval = null;
     //copie de la valeur pour binding
     currentTime = null;
+    state = "stopped";//loading, playing, paused,
 
 
 
@@ -33,6 +33,9 @@ class App {
         }
         this.curRadioIndex = id;
         this.audioElement = new Audio(this.radios[id].flow);
+        this.state="stopped";
+        this.audioElement.addEventListener('loadstart', ()=>this.state="loading", false);
+        this.audioElement.addEventListener('canplaythrough', ()=>this.state="playing", false);
         this.audioElement.play();
         this.isPaused = false;
         this.delay = 0;
@@ -49,7 +52,7 @@ class App {
     }
 
     pause() {
-        this.isPaused = true;
+        this.state = "paused";
         this.audioElement.pause();
         this.interval = setInterval(()=>{
             this.delay += 0.1;
@@ -57,7 +60,7 @@ class App {
     }
 
     resume() {
-        this.isPaused = false;
+        this.state = "playing";
         this.audioElement.play();
         clearInterval(this.interval);
     }

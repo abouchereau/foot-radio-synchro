@@ -9,6 +9,13 @@
               </option>
           </select>
       </div>
+      <div class="pure-u-1-6 text-white text-center">
+        <i v-if="props.app.state=='paused'" class="fa-3x fa-solid fa-pause"></i>
+        <i v-if="props.app.state=='stopped'" class="fa-3x fa-solid fa-volume-xmark"></i>
+        <i v-if="props.app.state=='playing'" class="fa-3x fa-solid fa-radio"></i>
+        <i v-if="props.app.state=='loading'" class="fa-3x fa-solid fa-circle-notch fa-spin"></i>
+
+      </div>
     </div>
 </template>
 

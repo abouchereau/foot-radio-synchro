@@ -1,8 +1,8 @@
 <template>
     <div class="pure-g text-center mt-3">
       <div class="pure-u-1-1">
-        <button class="button-xlarge pure-button button-secondary"  :disabled="app.audioElement == null" v-if="app.isPaused" @click="app.resume()"><i class="fa-solid fa-play"></i> PLAY</button>
-        <button v-else class="button-xlarge pure-button button-secondary" :disabled="app.audioElement == null" @click="app.pause()"> <i class="fa-solid fa-pause"></i> PAUSE</button>
+        <button class="button-xlarge pure-button button-secondary"  :disabled="app.audioElement == null" v-if="app.state=='paused'" @click="app.resume()"><i class="fa-solid fa-play"></i> PLAY</button>
+        <button v-if="app.state=='playing'" class="button-xlarge pure-button button-secondary" :disabled="app.audioElement == null" @click="app.pause()"> <i class="fa-solid fa-pause"></i> PAUSE</button>
       </div>
     </div>
     <div class="pure-g mt-4">
