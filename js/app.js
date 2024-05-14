@@ -22,6 +22,7 @@ class App {
     //copie de la valeur pour binding
     currentTime = null;
     state = "stopped";//loading, playing, paused,
+    lastTimestampInterval = 0;
 
 
 
@@ -37,7 +38,6 @@ class App {
         this.audioElement.addEventListener('loadstart', ()=>this.state="loading", false);
         this.audioElement.addEventListener('canplaythrough', ()=>this.state="playing", false);
         this.audioElement.play();
-        this.isPaused = false;
         this.delay = 0;
         setInterval(()=>{
             if (this.audioElement != null) {
@@ -54,8 +54,11 @@ class App {
     pause() {
         this.state = "paused";
         this.audioElement.pause();
+        this.lastTimestampInterval = Date.now();
         this.interval = setInterval(()=>{
-            this.delay += 0.1;
+            let now = Date.now();
+            this.delay += (now - this.lastTimestampInterval)/1000;
+            this.lastTimestampInterval = now;
         },100);
     }
 
